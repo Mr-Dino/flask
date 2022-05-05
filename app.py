@@ -34,7 +34,7 @@ def get_question_num():
     """Функция получения кол-ва вопросов"""
     if not request.json:
         abort(404)
-    elif request.json['question_num'].isnumeric():
+    elif type(request.json['question_num']) is not int and not request.json['question_num'].isnumeric():
         abort(404)
     questions_quantity = int(request.json['question_num'])
     main(questions_quantity)
